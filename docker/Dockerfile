@@ -29,7 +29,7 @@ EXPOSE 9090
 EXPOSE 8088
 
 # Things we like in a dev environment
-RUN apt-get install -y curl vim
+RUN apt-get install -y curl vim git
 
 # Install Bluemix _bx_ CLI (replaces _cf_)
 # RUN curl --location --remote-name https://clis.ng.bluemix.net/download/bluemix-cli/latest/linux64
