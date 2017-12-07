@@ -62,3 +62,5 @@ RUN bx plugin install container-registry -r Bluemix
 
 # TODO login
 # RUN bx login
+
+ADD scripts /tmp/scripts
