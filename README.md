@@ -4,6 +4,7 @@
 To start,
 
 ```bash
+./scripts/build.sh
 docker run -it middleware17/istioenv:latest
 ```
 
@@ -28,32 +29,3 @@ Expose the Kubernetes web UI locally and outside of Docker
 kubectl proxy --address='0.0.0.0'
 ```
 
-# TODO Install Istio?
-
-Should we install Istio?
-
-# Prepare analytics servers
-
-Expose the analytics servers outside of Docker
-
-```
-kubectl port-forward $(kubectl get pods --namespace istio-system --selector app=grafana --output jsonpath={.items[0].metadata.name}) --namespace istio-system 3000:3000 &
-kubectl port-forward $(kubectl get pods --namespace istio-system --selector app=zipkin --output jsonpath={.items[0].metadata.name}) --namespace istio-system 9411:9411 &
-```
-
-# Install app
-
-TODO Book Info
-
-# Run this image itself in Kubernetes
-
-```
-bx plugin install container-registry -r Bluemix
-# export DOCKER_NAMESPACE=`whoami`
-bx cr namespace-list
-docker tag middleware17/istioenv registry.ng.bluemix.net/$DOCKER_NAMESPACE/middleware17/istioenv
-docker push registry.ng.bluemix.net/$DOCKER_NAMESPACE/middleware17/istioenv
-kubectl run -it --rm --restart=Never dummy --image registry.ng.bluemix.net/$DOCKER_NAMESPACE/middleware17/istioenv
-# or
-# kubectl run -it --rm --restart=Never dummy --image-pull-policy=Always --image registry.ng.bluemix.net/$DOCKER_NAMESPACE/middleware17/istioenv
-```
