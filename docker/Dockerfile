@@ -64,3 +64,4 @@ RUN bx plugin install container-registry -r Bluemix
 # RUN bx login
 
 ADD scripts /tmp/scripts
+ADD istio.yaml /tmp/istio.yaml
